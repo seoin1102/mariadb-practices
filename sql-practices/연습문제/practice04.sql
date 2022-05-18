@@ -5,8 +5,8 @@
 select count(*) 
 from salaries 
 where salary  > (select avg(salary)
-					from salaries 
-                    where to_date = '9999-01-01')
+		from salaries 
+                where to_date = '9999-01-01')
 and to_date = '9999-01-01';
 
 -- 문제2. 
@@ -19,11 +19,11 @@ and a.emp_no = d.emp_no
 and c.to_date = '9999-01-01'
 and d.to_date = '9999-01-01'
 and (d.salary, c.dept_no) in (select max(a.salary),  b.dept_no
-							from salaries a, dept_emp b
-							where a.emp_no = b.emp_no
-                            and a.to_date = '9999-01-01'
-                            and b.to_date = '9999-01-01'
-							group by b.dept_no)
+				from salaries a, dept_emp b
+				where a.emp_no = b.emp_no
+                            	and a.to_date = '9999-01-01'
+                            	and b.to_date = '9999-01-01'
+				group by b.dept_no)
 order by d.salary desc;
                             
                       
