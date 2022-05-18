@@ -5,14 +5,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class InsertTest01 {
+public class UpdateTest01 {
+
 	public static void main(String[] args) {
-		insert("cs");
-		insert("경영지원");
-		insert("인프라");
+		// update(4L, "전략기획팀");
+		DepartmentVo vo = new DepartmentVo();
+		vo.setNo(4L);
+		vo.setName("기획");
 		
+		update(vo);
 	}
-	public static boolean insert(String name) {
+
+	private static boolean update(DepartmentVo vo) {
 		boolean result = false;
 		Connection connection = null;
 		Statement stmt = null;
@@ -29,12 +33,14 @@ public class InsertTest01 {
 			stmt = connection.createStatement();
 			
 			//4. SQL 실생
-			String sql = "insert into department values(null, '"+name+ "')";
+			String sql = "update department set name = '" +vo.getName()+ "'where no = " +vo.getNo();
 			int count = stmt.executeUpdate(sql);
 			result = count == 1;
 		} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			
+			
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패:" + e);
 		}finally {
@@ -51,7 +57,7 @@ public class InsertTest01 {
 			}
 		
 			return result;
+		
 	}
-	
 
 }
