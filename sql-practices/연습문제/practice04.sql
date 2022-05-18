@@ -51,9 +51,29 @@ and b.salary >  (select avg(b.salary) group by c.dept_no);
 
 -- 문제6.
 -- 평균 연봉이 가장 높은 부서는? 
+select c.dept_name, avg(a.salary)
+from salaries a, dept_emp b, departments c
+where a.emp_no = b.emp_no
+and c.dept_no = b.dept_no
+group by c.dept_name
+having avg(a.salary) >= all(select avg(a.salary)
+			from salaries a, dept_emp b, departments c
+			where a.emp_no = b.emp_no
+			and c.dept_no = b.dept_no
+			group by c.dept_name);
 
 -- 문제7.
 -- 평균 연봉이 가장 높은 직책?
+select c.title, avg(a.salary)
+from salaries a, employees b, titles c
+where a.emp_no = b.emp_no
+and c.emp_no = b.emp_no
+group by c.title
+having avg(a.salary) >= all(select avg(a.salary)
+			from salaries a, employees b, titles c
+			where a.emp_no = b.emp_no
+			and c.emp_no = b.emp_no
+			group by c.title);
 
 -- 문제8.
 -- 현재 자신의 매니저보다 높은 연봉을 받고 있는 직원은?
