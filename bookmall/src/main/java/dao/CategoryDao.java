@@ -63,7 +63,7 @@ public class CategoryDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				Long no = rs.getLong(1); // db 1로 시작
+				Long no = rs.getLong(1); // db 1濡� ����
 				String name = rs.getString(2);
 
 				
@@ -93,55 +93,17 @@ public class CategoryDao {
 		return result;
 	}
 	
-	public CategoryVo findByNo(long no) {
-		CategoryVo result = null;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			connection = getConnection();
-			
-			String sql = "select * from category where no = ?";
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setLong(1, no);
-			rs = pstmt.executeQuery();
 
-			if(rs.next()) {
-				result = new CategoryVo();
-
-				result.setName(rs.getString(1));
-
-
-			}
-		} catch (SQLException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
-		} finally {
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
 	
 	private Connection getConnection() throws SQLException {
 		Connection connection = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mysql://192.168.10.36:3306/bookmall?charset=utf8";
+			String url = "jdbc:mysql://192.168.10.46:3306/bookmall?charset=utf8";
 			connection = DriverManager.getConnection(url, "bookmall", "bookmall");
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패"+ e);
+			System.out.println("드라이버 로딩 실패:"+ e);
 		}
 		return connection;
 	}
