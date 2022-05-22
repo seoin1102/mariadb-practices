@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import vo.BookVo;
 import vo.CartVo;
 
 public class CartDao {
@@ -95,57 +97,17 @@ public class CartDao {
 		return result;
 	}
 	
-	public CartVo findByNo(long no) {
-		CartVo result = null;
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			connection = getConnection();
-			
-			String sql = "select * from cart where no = ?";
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setLong(1, no);
-			rs = pstmt.executeQuery();
 
-			if(rs.next()) {
-				result = new CartVo();
-				
-				result.setNo(rs.getLong(1)); 
-				result.setMemberNo(rs.getLong(2));
-				result.setBookNo(rs.getLong(3));
-				result.setStock(rs.getInt(4));
-
-			}
-		} catch (SQLException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
-		} finally {
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-				if(pstmt != null) {
-					pstmt.close();
-				}
-				if(connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-	}
 	
 	private Connection getConnection() throws SQLException {
 		Connection connection = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mysql://192.168.10.36:3306/bookmall?charset=utf8";
+			String url = "jdbc:mysql://192.168.10.46:3306/bookmall?charset=utf8";
 			connection = DriverManager.getConnection(url, "bookmall", "bookmall");
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패"+ e);
+			System.out.println("ERROR"+ e);
 		}
 		return connection;
 	}
