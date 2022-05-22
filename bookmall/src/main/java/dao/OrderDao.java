@@ -19,7 +19,7 @@ public class OrderDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into orders values(null, ?, ?, ?,?)"; 
+			String sql = "insert into orders values(null,?, ?, ?, ?)"; 
 			pstmt = connection.prepareStatement(sql);
 			
 			pstmt.setLong(1, vo.getNumber());
@@ -101,7 +101,7 @@ public class OrderDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				Long no = rs.getLong(1); // db 1로 시작
+				Long no = rs.getLong(1); // db 1濡� ����
 				Long number = rs.getLong(2);
 				String memberName = rs.getString(3);
 				String memberEmail = rs.getString(4);
@@ -158,7 +158,7 @@ public class OrderDao {
 			rs = pstmt.executeQuery();
 
 			while(rs.next()) {
-				Long no = rs.getLong(1); // db 1로 시작
+				Long no = rs.getLong(1); // db 1濡� ����
 				String title = rs.getString(2);
 				Long stock = rs.getLong(3);
 				Long paymentPrice = rs.getLong(4);
@@ -198,10 +198,10 @@ public class OrderDao {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mysql://192.168.10.36:3306/bookmall?charset=utf8";
+			String url = "jdbc:mysql://192.168.10.46:3306/bookmall?charset=utf8";
 			connection = DriverManager.getConnection(url, "bookmall", "bookmall");
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패"+ e);
+			System.out.println("ERROR"+ e);
 		}
 		return connection;
 	}
