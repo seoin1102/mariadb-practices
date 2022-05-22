@@ -25,7 +25,7 @@ public class BookMall {
 
 	}
 	private static void insertData() {
-CategoryDao categorydao = new CategoryDao();
+		CategoryDao categorydao = new CategoryDao();
 		CategoryVo categoryvo = new CategoryVo();
 		categoryvo.setName("과학");
 		categorydao.insert(categoryvo);
@@ -83,18 +83,18 @@ CategoryDao categorydao = new CategoryDao();
 		orderVo.setMemberNo(1L);
 		orderVo.setPaymentPrice(3000L);
 		orderVo.setReceiveAddress("센텀호텔");
-	    orderDao.insert(orderVo);
+	    	orderDao.insert(orderVo);
 
 			
 		orderVo.setBookNo(1L);
 		orderVo.setOrderNo(20220519L);
 		orderVo.setStock(2L);
-	    orderDao.insertOrderBook(orderVo);
+	   	orderDao.insertOrderBook(orderVo);
 	    
-	    orderVo.setBookNo(3L);
-	    orderVo.setOrderNo(20220519L);
-	    orderVo.setStock(1L);	    
-	    orderDao.insertOrderBook(orderVo);
+	    	orderVo.setBookNo(3L);
+	   	 orderVo.setOrderNo(20220519L);
+	    	orderVo.setStock(1L);	    
+	    	orderDao.insertOrderBook(orderVo);
 	  
 	  
 		
