@@ -19,80 +19,87 @@ import vo.OrderVo;
 public class BookMall {
 
 	public static void main(String[] args) {
-//		BookDao dao = new BookDao();
-//		BookVo vo = new BookVo();
-//		vo.setTitle("이것이 MariaDB다");
-//		vo.setPrice(1000L);
-//		vo.setCategoryNo(2L);
-//		dao.insert(vo);
-		
-//		vo.setTitle("러닝 Rect.JS");
-//		vo.setPrice(2000L);
-//		vo.setCategoryNo(2L);
-//		dao.insert(vo);
-		
-//		vo.setTitle("코스모스");
-//		vo.setPrice(1000L);
-//		vo.setCategoryNo(1L);
-//		dao.insert(vo);
-		
-//		CartDao dao = new CartDao();
-//		CartVo vo = new CartVo();
-//		vo.setMemberNo(1L);
-//		vo.setBookNo(1L);
-//		vo.setStock(2);
-//		dao.insert(vo);
-		
-//		vo.setMemberNo(1L);
-//		vo.setBookNo(3L);
-//		vo.setStock(1);
-//		dao.insert(vo);
-		
-//		CategoryDao dao = new CategoryDao();
-//		CategoryVo vo = new CategoryVo();
-//		vo.setName("과학");
-//		dao.insert(vo);
-		
-//		vo.setName("IT");
-//		dao.insert(vo);
-		
-//		vo.setName("문학");
-//		dao.insert(vo);
-		
-		
-//		MemberDao dao = new MemberDao();
-//		MemberVo vo = new MemberVo();
-//		vo.setName("둘리");
-//		vo.setEmail("dooly@gmail.com");
-//		dao.insert(vo);
-//		
-//		vo.setName("마이콜");
-//		vo.setEmail("michol@gmail.com ");
-//		dao.insert(vo);
-		
-//		OrderDao dao = new OrderDao();
-//		OrderVo vo = new OrderVo();
-//		vo.setNo(20220519L);
-//		vo.setNumber(1L);
-//		vo.setMemberNo(1L);
-//		vo.setPaymentPrice(3000L);
-//		vo.setReceiveAddress("센텀호텔");
-		
-//		vo.setBookNo(1L);
-//		vo.setOrderNo(20220519L);
-//		vo.setStock(2L);
-//		dao.insertOrderBook(vo);
-//		
-//		vo.setBookNo(3L);
-//		vo.setOrderNo(20220519L);
-//		vo.setStock(1L);
-//
-//		dao.insertOrderBook(vo);
-//		
-//		displayInfo();
+
+		insertData();
+		displayInfo();
 
 	}
+	private static void insertData() {
+//		CategoryDao categorydao = new CategoryDao();
+//		CategoryVo categoryvo = new CategoryVo();
+//		categoryvo.setName("과학");
+//		categorydao.insert(categoryvo);
+//		
+//		categoryvo.setName("IT");
+//		categorydao.insert(categoryvo);
+//	
+//		categoryvo.setName("문학");
+//		categorydao.insert(categoryvo);
+		
+//		BookDao bookDao = new BookDao();
+//		BookVo bookVo = new BookVo();
+//		bookVo.setTitle("이것이 MariaDB다");
+//		bookVo.setPrice(1000L);
+//		bookVo.setCategoryNo(5L);
+//		bookDao.insert(bookVo);  
+//		
+//		bookVo.setTitle("러닝 Rect.JS");
+//		bookVo.setPrice(2000L);
+//		bookVo.setCategoryNo(5L);
+//		bookDao.insert(bookVo);
+//		
+//		bookVo.setTitle("코스모스");
+//		bookVo.setPrice(1000L);
+//		bookVo.setCategoryNo(4L);
+//		bookDao.insert(bookVo);
+//		
+//		MemberDao memberDao = new MemberDao();
+//		MemberVo memberVo = new MemberVo();
+//		memberVo.setName("둘리");
+//		memberVo.setEmail("dooly@gmail.com");
+//		memberDao.insert(memberVo);
+//		
+//		memberVo.setName("마이콜");
+//		memberVo.setEmail("michol@gmail.com ");
+//		memberDao.insert(memberVo);
+//		
+		CartDao cartDao = new CartDao();
+		CartVo cartVo = new CartVo();
+//		cartVo.setMemberNo(3L);
+//		cartVo.setBookNo(6L);
+//		cartVo.setStock(2);
+//		cartDao.insert(cartVo);
+//			
+//		cartVo.setMemberNo(4L);
+//		cartVo.setBookNo(6L);
+//		cartVo.setStock(1);
+//		cartDao.insert(cartVo);
+//		
+//		
+		OrderDao orderDao = new OrderDao();
+		OrderVo orderVo = new OrderVo();
+//		orderVo.setNo(20220519L);
+//		orderVo.setNumber(1L);
+//		orderVo.setMemberNo(3L);
+//		orderVo.setPaymentPrice(3000L);
+//		orderVo.setReceiveAddress("센텀호텔");
+//	    orderDao.insert(orderVo);
 
+			
+		orderVo.setBookNo(6L);
+		orderVo.setOrderNo(20220521L);
+		orderVo.setStock(2L);
+	    orderDao.insertOrderBook(orderVo);
+	    
+	    orderVo.setBookNo(7L);
+	    orderVo.setOrderNo(20220521L);
+	    orderVo.setStock(1L);	    
+	    orderDao.insertOrderBook(orderVo);
+	  
+		
+		
+	}
+	
 
 	private static void displayInfo() {
 		List<MemberVo> memberList = new MemberDao().findAll();
@@ -110,10 +117,6 @@ public class BookMall {
 		System.out.println("========================");
 		for(CategoryVo vo: categoryList) {
 			System.out.println(vo.getNo() + " " + vo.getName());	
-		}
-		System.out.println("========================");
-		for(BookVo vo: bookList) {
-			System.out.println(vo.getNo() + " " + vo.getTitle() + " " + vo.getPrice()+  ", " + vo.getCategoryName());	
 		}
 		System.out.println("========================");
 		for(BookVo vo: bookList) {
