@@ -20,7 +20,7 @@ public class BookMall {
 
 	public static void main(String[] args) {
 
-		insertData();
+		//insertData();
 		displayInfo();
 
 	}
