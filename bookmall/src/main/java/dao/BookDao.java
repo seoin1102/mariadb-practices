@@ -107,7 +107,7 @@ public class BookDao {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			String url = "jdbc:mysql://192.168.35.179:3306/bookmall?charset=utf8";
+			String url = "jdbc:mysql://192.168.10.46:3306/bookmall?charset=utf8";
 			connection = DriverManager.getConnection(url, "bookmall", "bookmall");
 		} catch (ClassNotFoundException e) {
 			System.out.println("ERROR:"+ e);
